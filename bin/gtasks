@@ -445,8 +445,8 @@ end
 if $0 == __FILE__
   sub_command = ARGV.shift || 'list'
   cli = GoogleTaskCLI.new(
-    :client_id => '1093768391952-h06ff0ddg6cr4hcv0nou7s3oijo1jn6i.apps.googleusercontent.com',
-    :client_secret => 'Ypk7pXDPt9HaAF37yipXiqy5',
+    :client_id => '',
+    :client_secret => '',
     #:logger => Logger.new(STDERR),
     :no_refresh => true
   )
