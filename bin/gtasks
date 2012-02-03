@@ -13,7 +13,8 @@ config = Pit.get("gtasks", :require => {
 cli = GoogleTaskCLI.new(
   :client_id => config[:client_id],
   :client_secret => config[:client_secret],
-  #:logger => Logger.new(STDERR),
+  :logger => Logger.new(STDERR),
+  :callback_uri => 'http://localhost:8080/oauth2callback'
   #:no_refresh => true
 )
 

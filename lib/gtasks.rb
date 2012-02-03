@@ -255,8 +255,9 @@ class GoogleTask
     @client_secret = options[:client_secret] or raise ArgumentError.new
     @logger = options[:logger] ||= Logger.new(nil)
     @no_refresh = options[:no_refresh] ||= false
+    @callback_uri = options[:callback_uri] ||= nil
 
-    @gs_api = GoogleTaskAPI.new(:client_id => @client_id, :client_secret => @client_secret, :logger => @logger, :no_refresh => @no_refresh)
+    @gs_api = GoogleTaskAPI.new(:client_id => @client_id, :client_secret => @client_secret, :logger => @logger, :no_refresh => @no_refresh, :callback_uri => @callback_uri)
   end
 
   def tasks(list_ident = '@default')
