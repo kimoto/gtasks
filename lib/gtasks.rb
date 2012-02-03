@@ -149,7 +149,7 @@ class GoogleTaskAPI
         save_to_file @dat_path # save token
         @logger.info "saved"
       rescue => ex
-        FileUtils.rm @dat_path
+        FileUtils.rm @dat_path if File.exists? @dat_path
         @logger.info "error detect. remove #{@dat_path.inspect}"
         @logger.info "error information: #{ex.inspect}"
       end
