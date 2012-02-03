@@ -5,39 +5,37 @@ require 'gtasks'
 require 'logger'
 require 'pit'
 
-if $0 == __FILE__
-  config = Pit.get("gtasks", :require => {
-    :client_id => 'your google tasks client id',
-    :client_secret => 'your google takss client secret',
-  })
+config = Pit.get("gtasks", :require => {
+  :client_id => 'your google tasks client id',
+  :client_secret => 'your google takss client secret',
+})
 
-  cli = GoogleTaskCLI.new(
-    :client_id => config[:client_id],
-    :client_secret => config[:client_secret],
-    #:logger => Logger.new(STDERR),
-    #:no_refresh => true
-  )
+cli = GoogleTaskCLI.new(
+  :client_id => config[:client_id],
+  :client_secret => config[:client_secret],
+  #:logger => Logger.new(STDERR),
+  #:no_refresh => true
+)
 
-  sub_command = ARGV.shift || 'list'
-  case sub_command
-  when 'list'
-    cli.list(ARGV.shift || 'default')
-  when 'lists'
-    cli.lists
-  when 'add'
-    raise ArgumentError if ARGV.empty?
-    cli.add(ARGV.join(' '))
-  when 'clear'
-    cli.clear
-  when 'done'
-    param = ARGV.shift or raise ArgumentError
-    cli.done(param)
-  when 'delete'
-    param = ARGV.shift or raise ArgumentError
-    cli.delete(param)
-  when 'choice'
-    cli.choice
-  else
-    raise ArgumentError
-  end
+sub_command = ARGV.shift || 'list'
+case sub_command
+when 'list'
+  cli.list(ARGV.shift || 'default')
+when 'lists'
+  cli.lists
+when 'add'
+  raise ArgumentError if ARGV.empty?
+  cli.add(ARGV.join(' '))
+when 'clear'
+  cli.clear
+when 'done'
+  param = ARGV.shift or raise ArgumentError
+  cli.done(param)
+when 'delete'
+  param = ARGV.shift or raise ArgumentError
+  cli.delete(param)
+when 'choice'
+  cli.choice
+else
+  raise ArgumentError
 end
