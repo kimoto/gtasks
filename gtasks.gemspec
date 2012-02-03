@@ -40,6 +40,7 @@ Gem::Specification.new do |s|
      "test/gtasks_test.rb"
   ]
 
+  s.add_dependency 'pit'
   s.add_dependency 'oauth2'
   s.add_dependency 'rack'
   s.add_dependency 'yaml'
